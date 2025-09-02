@@ -7,6 +7,23 @@
 
 function heaviestBagPair(bagWeights) {
   // Start Coding Here
+  if(bagWeights.length < 2){
+    return null;
+  }
+
+  let maxWeight = 0;
+  let bestPair = [];
+
+  for(let i =0; i<bagWeights.length-1; i++){
+    let currWeight = bagWeights[i] + bagWeights[i+1];
+
+    if(currWeight > maxWeight){
+      maxWeight = currWeight;
+      bestPair = [bagWeights[i], bagWeights[i+1]];
+    }
+  }
+
+  return bestPair;
 }
 
 console.log(heaviestBagPair([5, 8, 12, 15, 7]));
@@ -17,3 +34,10 @@ console.log(heaviestBagPair([10, 20, 5, 7, 15]));
 
 console.log(heaviestBagPair([4]));
 // Output: null เพราะมีกระเป๋าแค่ใบเดียว
+
+/* 
+Sliding Window technique
+- จะใช้ในการแก้ไขปัญหาที่เกี่ยวกับการค้นหาคู่ขององค์ประกอบใน Array หรือ Subarray
+- จะใช้คู่ขององค์ประกอบที่ติดกันในการค้นหาคู่ขององค์ประกอบใน Array หรือ Subarray
+
+*/
